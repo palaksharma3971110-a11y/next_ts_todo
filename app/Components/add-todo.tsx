@@ -1,12 +1,14 @@
 "use client"
-import {useState} from "react";
+import { useState } from "react";
+import{useTodos} from "../store/todos";
 const AddTodo=()=>{
-  const[todo,setTodo]= useState();
-  const handleFormSubmit=(e:FormEvent<HTMLFormElement>)=>{ 
+  const[todo,setTodo]= useState("");
+  const {handleAddTodo}= useTodos();
+  const handleFormSubmit=(e:React.FormEvent<HTMLFormElement>)=>{ 
     e.preventDefault();
     handleAddTodo(todo);
-    setTodo(value:"");
-  }
+    setTodo("");
+  };
   return(
     
       <form onSubmit={handleFormSubmit}>
